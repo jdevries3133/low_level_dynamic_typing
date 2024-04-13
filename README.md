@@ -1,4 +1,4 @@
-# Low Level Dynamic Typing
+# Low-Level Dynamic Typing
 
 Computers are rocks we tricked into doing math. For example, we can create a
 physical electrical circuit which will perform [addition on its
@@ -6,12 +6,46 @@ inputs](https://en.wikipedia.org/wiki/Adder_\(electronics\)). Meanwhile, if
 you're starting to learn programming, you're probably using Python, JavaScript,
 SQL, or even functions in Excel or Google Sheets! You may know that these
 languages have a feature called dynamic typing. It's a big part of what makes
-them so easy to learn and use. For example, JavaScript can very happily run this
-code:
+them so easy to learn and use. Dynamic typing means that we can run programs
+which add floating point values to integers, multiply strings, compare objects
+of different types, etc. For example, JavaScript can very happily run this code:
 
 ```
 > console.log(1 + 'cat')
 1cat
+```
+
+Python can multiply a string by a number;
+
+```python
+print('cat' * 3)
+```
+
+In Python, we can compare different types of numbers:
+
+```
+if 1 > 0.9: print('yup')
+```
+
+This is true even though inside the computer, 1 is represented as;
+
+```
+00000000000000000000000000000001
+```
+
+While according to [IEEE
+754](https://www.h-schmidt.net/FloatConverter/IEEE754.html), the value `0.9` is
+represented as:
+
+```
+00111111011001100110011001100110
+```
+
+In Python, we can even do mathematical operations between integers, floating
+point numbers, and _complex numbers_ which contain an imaginary part!
+
+```python
+print(1 + 3 - 1.2 / 4 + 4j)
 ```
 
 Stop and take a second to think about that -- how the heck did that work? It's
@@ -21,12 +55,11 @@ under the hood.
 
 ## On Smart Rocks
 
-Let's review the lower-level details of how a computer works in a bit more
-detail.
+Let's review the lower-level details of how a computer works.
 
-At a low level, a computer has a CPU, which takes a bit of instruction, and has
-some amount of, "slots," or, "positions," for data to be stored. For example,
-this is roughly how a computer adds 1 + 1 and prints out the result;
+A computer has a CPU, which takes a bit of instruction, and has some amount of,
+"slots," or, "positions," for data to be stored. For example, this is roughly
+how a computer adds 1 + 1 and prints out the result;
 
 ```
 LOAD 1 INTO POSITION 1
@@ -168,9 +201,9 @@ different from regular numbers or strings or anything else. Everything is just
 pulses of electricity at the end of the day. We impose our human ideas on the
 pulses of electricity, because otherwise it's all too confusing for us.
 
-We learned before that `&` is used to dereference a pointer. The opposite of `&`
-is `*`, which is typically used to create a pointer. For example, in the C
-programming language, I might say;
+We learned before that `*` is used to dereference a pointer. The opposite of `*`
+is `&`, which gives us the address of a piece of data; it's typically used to
+create a pointer. For example, in the C programming language, I might say;
 
 ```c
 #include<stdio.h>
@@ -209,13 +242,13 @@ class num(int):
     def __init__(self, n):
         self.n = n
     def __add__(self, other):
-        print("nah, I"m good")
+        print("nah, I'm good")
         return 0
 
 print(add(num(1), "?"))
 ```
 
-If a bit of data, and a number, and a string all take up different amounts of
+If a bit of data, a number, and a string all take up different amounts of
 storage in a computer, how can I do this in Python, and it "just works?"
 
 ```python
@@ -237,4 +270,22 @@ def what_is_in_your_wallet(wallet):
         print("Um, sir, your wallet is a fish...")
 ```
 
+# Low-Level Dynamic Typing
 
+OK, time to get un-confused. It's time to see how low-level dynamic typing
+works! By the end of this adventure, we'll be able to create a program in C
+which is able to run highly dynamic code, like;
+
+```c
+Object* a = str("Very ");
+Object* b = str("cool");
+Object* c = int(5);
+Object* d = str("!");
+
+print(
+  add(
+    add(a, b),
+    mul(c * d)
+  )
+);
+```
