@@ -285,7 +285,7 @@ Object* d = str("!");
 print(
   add(
     add(a, b),
-    mul(c * d)
+    mul(c, d)
   )
 );
 ```
