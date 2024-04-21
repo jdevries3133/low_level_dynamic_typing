@@ -81,7 +81,6 @@ void dynamic_dispatch_example() {
     void* func_b_ptr = &func_b;
 
     void* ptr;
-    int n = rand();
     if (rand() % 2) {
         ptr = func_a_ptr;
     } else {
