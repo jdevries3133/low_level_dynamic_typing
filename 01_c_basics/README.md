@@ -1,3 +1,9 @@
+> [!WARNING]
+> This chapter is under construction. I plan to revisit it when latter
+> chapters are finished. For now, start with chapter 2, or check out [the K & R
+> C book](https://en.wikipedia.org/wiki/The_C_Programming_Language), since I'm
+> not using any fancy new-fangled features here.
+
 # C Language Basics
 
 This is a basic overview of the C programming language, and an opportunity to
