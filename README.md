@@ -289,3 +289,8 @@ print(
   )
 );
 ```
+
+# How to Use This
+
+In each chapter, read the `README.md` side-by-side with `main.c`. Run `make` in
+the chapter folder to compile and run `main.c`.
